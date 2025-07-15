@@ -6,19 +6,20 @@
     <title>Fluffy & Crispy - Your Cloud Kitchen</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Dancing Script for all text, with Inter as a fallback -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Playfair Display for headings, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Dancing Script', cursive, 'Inter', sans-serif; /* Apply Dancing Script to all text */
+            font-family: 'Inter', sans-serif; /* Default font for body */
             background-color: #f7fafc; /* Light gray background */
         }
         .scroll-smooth {
             scroll-behavior: smooth;
         }
-        /* Headings already use Dancing Script due to body font, but explicitly ensure bold */
+        /* Apply Playfair Display to headings for a stylish touch */
         h1, h2, h3 {
-            font-weight: 700; /* Bold for Dancing Script */
+            font-family: 'Playfair Display', serif;
+            font-weight: 700; /* Bold for Playfair Display */
         }
         /* Item section styling for alternating layout */
         .menu-item-section {
@@ -82,20 +83,42 @@
             z-index: 0;
         }
 
-        /* Contact section logo background at bottom center */
+        /* Contact section logo background at bottom center, spreading across the section */
         .contact-logo-bg-bottom {
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px; /* Adjust size as needed */
-            height: 200px; /* Adjust size as needed */
+            top: 0; /* Start from top */
+            left: 0; /* Start from left */
+            width: 100%; /* Cover full width */
+            height: 100%; /* Cover full height */
             background-image: url('images/ic_fluffy_crispy.jpeg');
-            background-size: contain;
+            background-size: cover; /* Cover the entire area */
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: center bottom; /* Position at bottom center */
             opacity: 0.1; /* Some alpha */
             z-index: 0; /* Ensure it's behind text */
+        }
+
+        /* Language toggle button styling */
+        .language-toggle-btn {
+            width: 40px; /* Small circular button */
+            height: 40px;
+            border-radius: 50%; /* Make it circular */
+            background-color: #e6ffee; /* Light green background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+        .language-toggle-btn:hover {
+            background-color: #c6f6d5; /* Lighter green on hover */
+        }
+        .language-toggle-btn svg {
+            width: 24px; /* Size of the flag icon */
+            height: 24px;
+            border-radius: 50%; /* Keep flag circular */
+            box-shadow: 0 0 3px rgba(0,0,0,0.1); /* Small shadow for flag */
         }
     </style>
 </head>
@@ -108,10 +131,53 @@
                 <img src="images/ic_fluffy_crispy.jpeg" alt="Fluffy & Crispy Logo" class="h-10 w-auto rounded-full shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/100x100/CCCCCC/000000?text=Logo';">
                 <span class="text-2xl font-bold text-gray-800 hidden sm:block">Fluffy & Crispy</span>
             </a>
-            <div class="space-x-4">
+            <div class="space-x-4 flex items-center">
                 <a href="#menu" class="text-gray-600 hover:text-green-600 transition duration-300">Menu</a>
                 <a href="#about" class="text-gray-600 hover:text-green-600 transition duration-300">About Us</a>
                 <a href="#contact" class="text-gray-600 hover:text-green-600 transition duration-300">Contact</a>
+                <button id="languageToggle" class="language-toggle-btn">
+                    <!-- US Flag SVG -->
+                    <svg id="usFlag" class="flag-icon" viewBox="0 0 512 512" style="display: block;">
+                        <rect width="512" height="512" fill="#002868"/>
+                        <rect width="512" height="352" fill="#BF0A30"/>
+                        <rect width="512" height="192" fill="#FFFFFF"/>
+                        <path fill="#BF0A30" d="M0 0h512v32H0zM0 64h512v32H0zM0 128h512v32H0zM0 192h512v32H0zM0 256h512v32H0zM0 320h512v32H0zM0 384h512v32H0zM0 448h512v32H0z"/>
+                        <rect width="256" height="256" fill="#002868"/>
+                        <g fill="#FFFFFF">
+                            <path id="star" d="M128 64l-15.6 48.2 50.8 0-41.1 30 15.6 48.2-41.1-30-41.1 30 15.6-48.2-41.1-30 50.8 0z" transform="scale(0.2) translate(100 100)"/>
+                            <use href="#star" x="50"/>
+                            <use href="#star" x="100"/>
+                            <use href="#star" x="150"/>
+                            <use href="#star" x="200"/>
+                            <use href="#star" y="50"/>
+                            <use href="#star" x="50" y="50"/>
+                            <use href="#star" x="100" y="50"/>
+                            <use href="#star" x="150" y="50"/>
+                            <use href="#star" x="200" y="50"/>
+                            <use href="#star" y="100"/>
+                            <use href="#star" x="50" y="100"/>
+                            <use href="#star" x="100" y="100"/>
+                            <use href="#star" x="150" y="100"/>
+                            <use href="#star" x="200" y="100"/>
+                            <use href="#star" y="150"/>
+                            <use href="#star" x="50" y="150"/>
+                            <use href="#star" x="100" y="150"/>
+                            <use href="#star" x="150" y="150"/>
+                            <use href="#star" x="200" y="150"/>
+                            <use href="#star" y="200"/>
+                            <use href="#star" x="50" y="200"/>
+                            <use href="#star" x="100" y="200"/>
+                            <use href="#star" x="150" y="200"/>
+                            <use href="#star" x="200" y="200"/>
+                        </g>
+                    </svg>
+                    <!-- Austrian Flag SVG -->
+                    <svg id="atFlag" class="flag-icon" viewBox="0 0 512 512" style="display: none;">
+                        <rect width="512" height="512" fill="#ED2939"/>
+                        <rect width="512" height="170.67" y="170.67" fill="#FFFFFF"/>
+                        <rect width="512" height="170.67" fill="#ED2939"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
@@ -123,15 +189,21 @@
 
         <div class="container mx-auto px-4 relative z-10">
             <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down">
-                Fluffy & Crispy
+                <span data-lang="en">Fluffy & Crispy</span>
+                <span data-lang="de" class="hidden">Fluffy & Crispy</span>
             </h1>
             <!-- New title below caption -->
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 opacity-90 animate-fade-in-up">Comfort in every bite</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 opacity-90 animate-fade-in-up">
+                <span data-lang="en">Comfort in every bite</span>
+                <span data-lang="de" class="hidden">Komfort bei jedem Bissen</span>
+            </h2>
             <p class="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up">
-                Freshly prepared Dosas, Idlis, and more, crafted with tradition and passion.
+                <span data-lang="en">Freshly prepared Dosas, Idlis, and more, crafted with tradition and passion.</span>
+                <span data-lang="de" class="hidden">Frisch zubereitete Dosas, Idlis und mehr, mit Tradition und Leidenschaft hergestellt.</span>
             </p>
             <a href="#menu" class="bg-white text-green-700 hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
-                Explore Our Menu
+                <span data-lang="en">Explore Our Menu</span>
+                <span data-lang="de" class="hidden">Unsere Speisekarte entdecken</span>
             </a>
         </div>
     </section>
@@ -139,15 +211,24 @@
     <!-- Menu Section -->
     <section id="menu" class="py-16 bg-gray-50 rounded-t-3xl mt-8 shadow-inner">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Our Delicious Menu</h2>
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
+                <span data-lang="en">Our Delicious Menu</span>
+                <span data-lang="de" class="hidden">Unsere köstliche Speisekarte</span>
+            </h2>
 
             <!-- Menu Item: Plain Dosa (Image Left, Description Right) -->
             <div class="menu-item-section">
                 <img src="images/ic_plain_dosa.jpeg" alt="Plain Dosa" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFD700/000000?text=Plain+Dosa';" class="md:mr-8">
                 <div class="content">
                     <h3 class="text-3xl font-semibold text-gray-900 mb-2">Plain Dosa</h3>
-                    <p class="text-gray-700 text-lg mb-4">A classic South Indian delight, our Plain Dosa is a thin, crispy golden crepe made from fermented rice and lentil batter. Perfectly light and flavorful, it's a staple for any meal.</p>
-                    <p class="text-gray-800 font-medium text-lg">**Served with Fresh Peanut Chutney and Authentic Sambar.**</p>
+                    <p class="text-gray-700 text-lg mb-4">
+                        <span data-lang="en">A classic South Indian delight, our Plain Dosa is a thin, crispy golden crepe made from fermented rice and lentil batter. Perfectly light and flavorful, it's a staple for any meal.</span>
+                        <span data-lang="de" class="hidden">Ein klassischer südindischer Genuss, unsere Plain Dosa ist ein dünner, knuspriger goldener Crêpe aus fermentiertem Reis- und Linsen-Teig. Perfekt leicht und geschmackvoll, ein Grundnahrungsmittel für jede Mahlzeit.</span>
+                    </p>
+                    <p class="text-gray-800 font-medium text-lg">
+                        <span data-lang="en">**Served with Fresh Peanut Chutney and Authentic Sambar.**</span>
+                        <span data-lang="de" class="hidden">**Serviert mit frischem Erdnuss-Chutney und authentischem Sambar.**</span>
+                    </p>
                     <span class="block text-3xl font-bold text-green-600 mt-4">€5.00</span>
                 </div>
             </div>
@@ -157,8 +238,14 @@
                 <img src="images/ic_masala_dosa.jpeg" alt="Masala Dosa" onerror="this.onerror=null;this.src='https://placehold.co/600x400/90EE90/000000?text=Masala+Dosa';" class="md:ml-8">
                 <div class="content">
                     <h3 class="text-3xl font-semibold text-gray-900 mb-2">Masala Dosa</h3>
-                    <p class="text-gray-700 text-lg mb-4">Our signature crispy dosa generously filled with a savory and aromatic potato masala. A harmonious blend of spices and textures that's incredibly satisfying.</p>
-                    <p class="text-gray-800 font-medium text-lg">**Served with Fresh Peanut Chutney and Authentic Sambar.**</p>
+                    <p class="text-gray-700 text-lg mb-4">
+                        <span data-lang="en">Our signature crispy dosa generously filled with a savory and aromatic potato masala. A harmonious blend of spices and textures that's incredibly satisfying.</span>
+                        <span data-lang="de" class="hidden">Unsere knusprige Spezialitäten-Dosa, großzügig gefüllt mit einer würzigen und aromatischen Kartoffel-Masala. Eine harmonische Mischung aus Gewürzen und Texturen, die unglaublich sättigend ist.</span>
+                    </p>
+                    <p class="text-gray-800 font-medium text-lg">
+                        <span data-lang="en">**Served with Fresh Peanut Chutney and Authentic Sambar.**</span>
+                        <span data-lang="de" class="hidden">**Serviert mit frischem Erdnuss-Chutney und authentischem Sambar.**</span>
+                    </p>
                     <span class="block text-3xl font-bold text-green-600 mt-4">€6.00</span>
                 </div>
             </div>
@@ -168,9 +255,75 @@
                 <img src="images/ic_idly-sambar.jpeg" alt="Idly" onerror="this.onerror=null;this.src='https://placehold.co/600x400/ADD8E6/000000?text=Idly';" class="md:mr-8">
                 <div class="content">
                     <h3 class="text-3xl font-semibold text-gray-900 mb-2">Idly</h3>
-                    <p class="text-gray-700 text-lg mb-4">Three soft, fluffy, and perfectly steamed rice cakes. These light and healthy idlis are a delightful and wholesome option, ideal for breakfast or a light meal.</p>
-                    <p class="text-gray-800 font-medium text-lg">**Served with Fresh Peanut Chutney and Authentic Sambar.**</p>
+                    <p class="text-gray-700 text-lg mb-4">
+                        <span data-lang="en">Three soft, fluffy, and perfectly steamed rice cakes. These light and healthy idlis are a delightful and wholesome option, ideal for breakfast or a light meal.</span>
+                        <span data-lang="de" class="hidden">Drei weiche, flauschige und perfekt gedämpfte Reiskuchen. Diese leichten und gesunden Idlis sind eine köstliche und vollwertige Option, ideal zum Frühstück oder als leichte Mahlzeit.</span>
+                    </p>
+                    <p class="text-gray-800 font-medium text-lg">
+                        <span data-lang="en">**Served with Fresh Peanut Chutney and Authentic Sambar.**</span>
+                        <span data-lang="de" class="hidden">**Serviert mit frischem Erdnuss-Chutney und authentischem Sambar.**</span>
+                    </p>
                     <span class="block text-3xl font-bold text-green-600 mt-4">€5.00</span>
+                </div>
+            </div>
+
+            <!-- New Menu Item: Millet Idly (Description Left, Image Right) -->
+            <div class="menu-item-section reverse">
+                <img src="images/ic_ragi_idli.jpeg" alt="Millet Idly" onerror="this.onerror=null;this.src='https://placehold.co/600x400/DDA0DD/000000?text=Millet+Idly';" class="md:ml-8">
+                <div class="content">
+                    <h3 class="text-3xl font-semibold text-gray-900 mb-2">Millet Idly</h3>
+                    <p class="text-gray-700 text-lg mb-4">
+                        <span data-lang="en">Healthy and wholesome idlis made from nutrient-rich finger millets, offering a unique texture and earthy flavor.</span>
+                        <span data-lang="de" class="hidden">Gesunde und vollwertige Idlis aus nährstoffreichen Fingerhirsen, die eine einzigartige Textur und einen erdigen Geschmack bieten.</span>
+                    </p>
+                    <p class="text-gray-800 font-medium text-lg">
+                        <span data-lang="en">**Served with Fresh Peanut Chutney and Authentic Sambar.**</span>
+                        <span data-lang="de" class="hidden">**Serviert mit frischem Erdnuss-Chutney und authentischem Sambar.**</span>
+                    </p>
+                    <span class="block text-3xl font-bold text-green-600 mt-4">€5.50</span>
+                </div>
+            </div>
+
+            <!-- New Menu Item: Combo Idly (Image Left, Description Right) -->
+            <div class="menu-item-section">
+                <img src="images/ic_combo_Idli.jpeg" alt="Combo Idly" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFB6C1/000000?text=Combo+Idly';" class="md:mr-8">
+                <div class="content">
+                    <h3 class="text-3xl font-semibold text-gray-900 mb-2">Combo Idly</h3>
+                    <p class="text-gray-700 text-lg mb-4">
+                        <span data-lang="en">Can't decide? Enjoy the best of both worlds with our combo: two soft Plain Idlis and two healthy Millet Idlis.</span>
+                        <span data-lang="de" class="hidden">Sie können sich nicht entscheiden? Genießen Sie das Beste aus beiden Welten mit unserem Combo: zwei weiche Plain Idlis und zwei gesunde Hirse-Idlis.</span>
+                    </p>
+                    <p class="text-gray-800 font-medium text-lg">
+                        <span data-lang="en">**Served with Fresh Peanut Chutney and Authentic Sambar.**</span>
+                        <span data-lang="de" class="hidden">**Serviert mit frischem Erdnuss-Chutney und authentischem Sambar.**</span>
+                    </p>
+                    <span class="block text-3xl font-bold text-green-600 mt-4">€6.00</span>
+                </div>
+            </div>
+
+            <!-- New Menu Item: Vegan Mango Lassi (Description Left, Image Right) -->
+            <div class="menu-item-section reverse">
+                <img src="images/ic_mango_lassi.jpeg" alt="Vegan Mango Lassi" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFDAB9/000000?text=Vegan+Mango+Lassi';" class="md:ml-8">
+                <div class="content">
+                    <h3 class="text-3xl font-semibold text-gray-900 mb-2">Vegan Mango Lassi</h3>
+                    <p class="text-gray-700 text-lg mb-4">
+                        <span data-lang="en">A refreshing and creamy vegan lassi made with ripe mango pulp and smooth plant-based yogurt. A sweet and tangy delight.</span>
+                        <span data-lang="de" class="hidden">Ein erfrischender und cremiger veganer Lassi aus reifem Mangopüree und glattem pflanzlichem Joghurt. Ein süßer und würziger Genuss.</span>
+                    </p>
+                    <span class="block text-3xl font-bold text-green-600 mt-4">€3.00</span>
+                </div>
+            </div>
+
+            <!-- New Menu Item: Kokum Fruit Juice (Image Left, Description Right) -->
+            <div class="menu-item-section">
+                <img src="images/ic_kokum_juice.jpeg" alt="Kokum Fruit Juice" onerror="this.onerror=null;this.src='https://placehold.co/600x400/87CEEB/000000?text=Kokum+Juice';" class="md:mr-8">
+                <div class="content">
+                    <h3 class="text-3xl font-semibold text-gray-900 mb-2">Kokum Fruit Juice</h3>
+                    <p class="text-gray-700 text-lg mb-4">
+                        <span data-lang="en">A traditional Indian beverage, Kokum Fruit Juice is known for its refreshing, tangy, and slightly sweet flavor. It's a natural coolant and a perfect thirst quencher.</span>
+                        <span data-lang="de" class="hidden">Ein traditionelles indisches Getränk, Kokum-Fruchtsaft, ist bekannt für seinen erfrischenden, säuerlichen und leicht süßen Geschmack. Er ist ein natürliches Kühlmittel und ein perfekter Durstlöscher.</span>
+                    </p>
+                    <span class="block text-3xl font-bold text-green-600 mt-4">€2.00</span>
                 </div>
             </div>
 
@@ -180,9 +333,13 @@
     <!-- About Us Section -->
     <section id="about" class="py-16 bg-white rounded-t-3xl mt-8 shadow-inner">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6">About Fluffy & Crispy</h2>
+            <h2 class="text-4xl font-bold text-gray-800 mb-6">
+                <span data-lang="en">About Fluffy & Crispy</span>
+                <span data-lang="de" class="hidden">Über Fluffy & Crispy</span>
+            </h2>
             <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                At Fluffy & Crispy, we bring the authentic flavors of South India straight to your table. As a dedicated cloud kitchen, we specialize in making traditional dishes like Dosas and Idlis using time-honored recipes and the freshest ingredients. Our passion is to share a piece of South Indian culinary heritage with you, delivered hot and fresh for a delightful dining experience at home.
+                <span data-lang="en">At Fluffy & Crispy, we bring the authentic flavors of South India straight to your table. As a dedicated cloud kitchen, we specialize in making traditional dishes like Dosas and Idlis using time-honored recipes and the freshest ingredients. Our passion is to share a piece of South Indian culinary heritage with you, delivered hot and fresh for a delightful dining experience at home.</span>
+                <span data-lang="de" class="hidden">Bei Fluffy & Crispy bringen wir die authentischen Aromen Südindiens direkt auf Ihren Tisch. Als engagierte Cloud-Küche sind wir darauf spezialisiert, traditionelle Gerichte wie Dosas und Idlis nach überlieferten Rezepten und mit den frischesten Zutaten zuzubereiten. Unsere Leidenschaft ist es, Ihnen ein Stück südindisches kulinarisches Erbe zu teilen, heiß und frisch für ein köstliches Esserlebnis zu Hause geliefert.</span>
             </p>
         </div>
     </section>
@@ -192,9 +349,13 @@
         <!-- Logo background at bottom center for contact section -->
         <div class="contact-logo-bg-bottom"></div>
         <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6">Get in Touch</h2>
+            <h2 class="text-4xl font-bold text-gray-800 mb-6">
+                <span data-lang="en">Get in Touch</span>
+                <span data-lang="de" class="hidden">Kontaktieren Sie uns</span>
+            </h2>
             <p class="text-lg text-gray-700 mb-8">
-                Have questions or special requests? We'd love to hear from you!
+                <span data-lang="en">Have questions or special requests? We'd love to hear from you!</span>
+                <span data-lang="de" class="hidden">Haben Sie Fragen oder spezielle Wünsche? Wir freuen uns darauf, von Ihnen zu hören!</span>
             </p>
             <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12">
                 <div class="flex items-center space-x-3">
@@ -207,7 +368,10 @@
                 </div>
             </div>
             <div class="mt-10">
-                <p class="text-gray-700 text-lg mb-4">Follow us on social media:</p>
+                <p class="text-gray-700 text-lg mb-4">
+                    <span data-lang="en">Follow us on social media:</span>
+                    <span data-lang="de" class="hidden">Folgen Sie uns auf Social Media:</span>
+                </p>
                 <div class="flex justify-center space-x-6">
                     <a href="#" class="text-gray-600 hover:text-green-600 transition duration-300">
                         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -228,7 +392,10 @@
     <footer class="bg-gray-800 text-white py-8 mt-8 rounded-t-xl">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; 2025 Fluffy & Crispy. All rights reserved.</p>
-            <p class="text-sm mt-2">Crafted with passion in Vienna, Austria.</p>
+            <p class="text-sm mt-2">
+                <span data-lang="en">Crafted with passion in Vienna, Austria.</span>
+                <span data-lang="de" class="hidden">Mit Leidenschaft in Wien, Österreich, hergestellt.</span>
+            </p>
         </div>
     </footer>
 
@@ -242,6 +409,39 @@
                 });
             });
         });
+
+        // Language toggle functionality
+        let currentLang = 'en'; // Default language
+        const languageToggleBtn = document.getElementById('languageToggle');
+        const usFlag = document.getElementById('usFlag');
+        const atFlag = document.getElementById('atFlag');
+
+        function updateLanguageDisplay() {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                if (element.dataset.lang === currentLang) {
+                    element.classList.remove('hidden');
+                } else {
+                    element.classList.add('hidden');
+                }
+            });
+
+            // Update flag visibility
+            if (currentLang === 'en') {
+                usFlag.style.display = 'block';
+                atFlag.style.display = 'none';
+            } else {
+                usFlag.style.display = 'none';
+                atFlag.style.display = 'block';
+            }
+        }
+
+        languageToggleBtn.addEventListener('click', () => {
+            currentLang = (currentLang === 'en') ? 'de' : 'en';
+            updateLanguageDisplay();
+        });
+
+        // Initial language display on load
+        updateLanguageDisplay();
     </script>
 </body>
 </html>
