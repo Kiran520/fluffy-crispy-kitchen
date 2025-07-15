@@ -67,47 +67,35 @@
             }
         }
 
-        /* Specific styles for left and right banana leaf patterns */
-        .hero-bg-left {
+        /* Hero section logo background overlay */
+        .hero-logo-overlay {
             position: absolute;
             top: 0;
             left: 0;
-            width: 50%; /* Covers left half */
+            width: 100%;
             height: 100%;
-            /* Updated banana leaf image URL from GitHub */
-            background-image: url('images/ic_banana_leave.jpeg');
-            background-size: contain; /* Ensure image fits */
+            background-image: url('images/ic_fluffy_crispy.jpeg');
+            background-size: cover;
+            background-position: center;
             background-repeat: no-repeat;
-            background-position: left center;
-            opacity: 0.15;
-            transform: scaleX(-1); /* Flip for left side */
+            opacity: 0.3; /* More alpha for the logo background */
+            z-index: 0;
         }
 
-        .hero-bg-right {
+        /* Contact section logo background at bottom center */
+        .contact-logo-bg-bottom {
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%; /* Covers right half */
-            height: 100%;
-            /* Updated banana leaf image URL from GitHub */
-            background-image: url('images/ic_banana_leave.jpeg');
-            background-size: contain; /* Ensure image fits */
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px; /* Adjust size as needed */
+            height: 200px; /* Adjust size as needed */
+            background-image: url('images/ic_fluffy_crispy.jpeg');
+            background-size: contain;
             background-repeat: no-repeat;
-            background-position: right center;
-            opacity: 0.15;
-        }
-
-        /* Adjust for smaller screens where the pattern might be too dominant */
-        @media (max-width: 767px) {
-            .hero-bg-left, .hero-bg-right {
-                width: 100%; /* Full width */
-                background-size: cover; /* Cover the area */
-                background-position: center center;
-                opacity: 0.08; /* Reduce opacity further */
-            }
-            .hero-bg-left {
-                transform: none; /* No flip on small screens */
-            }
+            background-position: center;
+            opacity: 0.1; /* Some alpha */
+            z-index: 0; /* Ensure it's behind text */
         }
     </style>
 </head>
@@ -116,7 +104,7 @@
     <nav class="bg-white p-4 shadow-md sticky top-0 z-50 rounded-b-xl">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#hero" class="flex items-center space-x-2">
-                <!-- Updated logo image URL from GitHub -->
+                <!-- Logo image from GitHub -->
                 <img src="images/ic_fluffy_crispy.jpeg" alt="Fluffy & Crispy Logo" class="h-10 w-auto rounded-full shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/100x100/CCCCCC/000000?text=Logo';">
                 <span class="text-2xl font-bold text-gray-800 hidden sm:block">Fluffy & Crispy</span>
             </a>
@@ -130,14 +118,15 @@
 
     <!-- Hero Section -->
     <section id="hero" class="relative bg-gradient-to-r from-green-600 to-green-800 text-white py-20 md:py-32 text-center overflow-hidden rounded-b-3xl shadow-lg">
-        <!-- Banana Leaf Pattern Overlays -->
-        <div class="hero-bg-left"></div>
-        <div class="hero-bg-right"></div>
+        <!-- Logo background overlay for hero section -->
+        <div class="hero-logo-overlay"></div>
 
         <div class="container mx-auto px-4 relative z-10">
             <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in-down">
                 Comfort in every bite
             </h1>
+            <!-- New title below caption -->
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 opacity-90 animate-fade-in-up">Fluffy & Crispy</h2>
             <p class="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up">
                 Freshly prepared Dosas, Idlis, and more, crafted with tradition and passion.
             </p>
@@ -199,8 +188,10 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-100 rounded-t-3xl mt-8 shadow-inner">
-        <div class="container mx-auto px-4 text-center">
+    <section id="contact" class="py-16 bg-gray-100 relative rounded-t-3xl mt-8 shadow-inner">
+        <!-- Logo background at bottom center for contact section -->
+        <div class="contact-logo-bg-bottom"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
             <h2 class="text-4xl font-bold text-gray-800 mb-6">Get in Touch</h2>
             <p class="text-lg text-gray-700 mb-8">
                 Have questions or special requests? We'd love to hear from you!
